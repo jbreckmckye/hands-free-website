@@ -1,4 +1,6 @@
-const events = require('./events');
+const ee = require('event-emitter');
+
+const events = new ee();
 
 events.on('something', data => {
     console.log(data);

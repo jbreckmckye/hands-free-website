@@ -18,18 +18,16 @@
         <h1>Web speech API demo: hands free recipes</h1>
 
         <p>
-            This demo showcases the new speech recognition and synthesis APIs. It reads out steps in a recipe using speech
-            synthesis, and allows the user to navigate steps with voice recognition. This means they can cook a recipe
-            from their phone without getting it dirty.
+            This demo reads out steps in a recipe using the speech synthesis API, and allows the user to navigate steps
+            with web voice recognition. This means they can cook a recipe from their phone without getting it dirty.
         </p>
 
         <p>
-            You will need a microphone and speakers. You may also need to give the application permission to listen to
-            your microphone. Speech recognition will only work under HTTPS.
+            This demo requires a microphone, speakers, and a HTTPS connection. It may need permission to listen to your voice.
         </p>
 
         <h2>Output</h2>
-        <div class="console no-js-hide">
+        <div aria-live="polite" class="console no-js-hide">
             <p data-model="title" class="console__text console__text--title">Step three</p>
             <p data-model="text" class="console__text">Chop the chorizo into chunks roughly 1cm wide</p>
         </div>

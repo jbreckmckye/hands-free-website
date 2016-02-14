@@ -29,5 +29,8 @@
     "gulp-inject": "^3.0.0",
     "gulp-webserver": "^0.9.1",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "event-emitter": "^0.3.4"
   }
 }
