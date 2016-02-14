@@ -1,3 +1,9 @@
-require('./book');
+const events = require('./events');
 
-console.log('hello');
+events.on('something', data => {
+    console.log(data);
+});
+
+window.setTimeout(()=> {
+    events.emit('something', 'hello world');
+}, 3000);
