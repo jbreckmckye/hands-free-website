@@ -1,0 +1,30 @@
+{
+  "name": "hands-free-website",
+  "version": "1.0.0",
+  "description": "Little demo of a hands-free website using the new voice APIs",
+  "main": "index.js",
+  "scripts": {
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbreckmckye/hands-free-website.git"
+  },
+  "keywords": [
+    "Demo",
+    "voice"
+  ],
+  "author": "Jimmy Breck-McKye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbreckmckye/hands-free-website/issues"
+  },
+  "homepage": "https://github.com/jbreckmckye/hands-free-website#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}
