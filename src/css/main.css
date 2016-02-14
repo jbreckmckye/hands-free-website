@@ -1,0 +1,30 @@
+/* Super-quick-dirty-basic CSS for the purpose of our demo */
+
+html {
+    font-family: 'Merriweather', serif;
+}
+
+.no-js .no-js-hide {
+    display: none;
+}
+
+.content {
+    max-width: 960px;
+    margin: auto;
+    padding: 1em;
+}
+
+.console {
+    background: #00264d;
+    padding: 2em;
+    min-height: 8em;
+}
+
+.console__text {
+    color: #eee0b3;
+    margin: 0;
+}
+
+.console__text + .console__text {
+    margin-top: 1em;
+}

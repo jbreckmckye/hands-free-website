@@ -7,15 +7,53 @@
     <meta name="description" content="Use voice synthesis API for a hands-free web experience">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
     <!-- inject:css -->
     <!-- endinject -->
 </head>
 <body>
 
-<p>Hello world!</p>
+    <div class="content">
 
-<!-- inject:js -->
-<!-- endinject -->
+        <h1>Web speech API demo: hands free recipes</h1>
+
+        <p>
+            This demo showcases the new speech recognition and synthesis APIs. It reads out steps in a recipe using speech
+            synthesis, and allows the user to navigate steps with voice recognition. This means they can cook a recipe
+            from their phone without getting it dirty.
+        </p>
+
+        <p>
+            You will need a microphone and speakers. You may also need to give the application permission to listen to
+            your microphone.
+        </p>
+
+        <h2>Output</h2>
+        <div class="console no-js-hide">
+            <p data-model="title" class="console__text console__text--title">Step three</p>
+            <p data-model="text" class="console__text">Chop the chorizo into chunks roughly 1cm wide</p>
+        </div>
+
+        <h2>Commands</h2>
+        <dl>
+            <dt>Next, continue</dt>
+            <dd>Move ahead one step</dd>
+
+            <dt>Back, previous</dt>
+            <dd>Move back one step</dd>
+
+            <dt>Repeat, again, what</dt>
+            <dd>Stops speaking and begins again</dd>
+        </dl>
+
+    </div>
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
 
 </body>
 </html>

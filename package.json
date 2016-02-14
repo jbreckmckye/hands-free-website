@@ -22,6 +22,7 @@
   "homepage": "https://github.com/jbreckmckye/hands-free-website#readme",
   "devDependencies": {
     "browserify": "^13.0.0",
+    "event-stream": "^3.3.2",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.6.0",
