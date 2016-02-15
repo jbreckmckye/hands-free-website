@@ -13,37 +13,44 @@
 </head>
 <body>
 
-    <div class="content">
+    <div data-recipe>
 
-        <h1>Web speech API demo: hands free recipes</h1>
+        <h1 data-recipe-title>
+            Recipe: Caldo Verde
+        </h1>
 
-        <p>
-            This demo reads out steps in a recipe using the speech synthesis API, and allows the user to navigate steps
-            with web voice recognition. This means they can cook a recipe from their phone without getting it dirty.
+        <button data-recipe-button class="no-js-hide">
+            Listen to this recipe hands-free
+        </button>
+
+        <p data-recipe-description>
+            This delicious chorizo-and-cabbage soup is a classic of Portugese cuisine.
         </p>
 
-        <p>
-            This demo requires a microphone, speakers, and a HTTPS connection. It may also need permission to listen to
-            your voice.
-        </p>
+        <h2>Ingredients</h2>
+        <ul data-recipe-ingredients>
+            <li>2 onions, chopped</li>
+            <li>4 cloves of garlic, chopped</li>
+            <li>2 tablespoons of olive oil</li>
+            <li>1 chorizo, sliced into thick rounds</li>
+            <li>5 potatoes, diced</li>
+            <li>2 pints of chicken stock</li>
+            <li>a large bunch of dark greens - cavolo nero works well - chopped finely</li>
+            <li>smoked paprika</li>
+            <li>2 bay leaves</li>
+            <li>salt and pepper, to taste</li>
+        </ul>
 
-        <h2>Output</h2>
-        <div aria-live="polite" class="console no-js-hide">
-            <p data-model="title" class="console__text console__text--title">Step three</p>
-            <p data-model="text" class="console__text">Chop the chorizo into chunks roughly 1cm wide</p>
-        </div>
-
-        <h2>Voice commands</h2>
-        <dl>
-            <dt>"Next", "continue"</dt>
-            <dd>Move ahead one step</dd>
-
-            <dt>"Back", "previous"</dt>
-            <dd>Move back one step</dd>
-
-            <dt>"Repeat", "again", "what"</dt>
-            <dd>Stops speaking and begins again</dd>
-        </dl>
+        <h2>Method</h2>
+        <ol data-recipe-method>
+            <li>Fry the onions and garlic in the olive oil until soft.</li>
+            <li>Add the chorizo.</li>
+            <li>Fry the onions and sausage for a few more minutes and then add the potatoes.</li>
+            <li>Add the stock, seasoning and bay leaves, and cook until the potatoes are soft.</li></li>
+            <li>When the potatoes are ready, mash them into the broth to make a thick base. Blanch the greens in boiling water,, drain, then add to the simmering broth.</li>
+            <li>Add as much cabbage as the broth will allow.</li>
+            <li>Simmer for a few minutes. The soup will turn an enticing shade of green.</li>
+        </ol>
 
     </div>
 
