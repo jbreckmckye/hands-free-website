@@ -12,10 +12,6 @@ function Microphone() {
     // Only want to respond to finalized results
     recognition.interimResults = false;
 
-    recognition.onstart = ()=> {
-        console.log('Begin listening');
-    };
-
     recognition.onresult = (event) => {
         const updatedResult = event.results[event.resultIndex];
         const bestMatch = updatedResult[0].transcript; // result-lists are arrays of the best-to-worst recognition matches
