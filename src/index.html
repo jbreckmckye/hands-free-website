@@ -13,36 +13,39 @@
 </head>
 <body>
 
-    <div data-recipe>
+    <h1>Web voice synthesis and speech recognition demo</h1>
 
-        <h1 data-recipe-title>
-            Recipe: Caldo Verde
-        </h1>
+    <p>The <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">Web Speech API</a> lets us build web applications that can speak to users, and listen back in turn. This page demonstrates a use-case - an online recipe that the user can listen to without the use of their hands, keeping their device clean from grubby hands.</p>
 
-        <button data-recipe-button class="no-js-hide">
-            Listen to this recipe hands-free
-        </button>
+    <p>When you click 'listen to this recipe', it will begin to read out steps to make the classic Portugese soup, <em>caldo verde</em>. Using your microphone, you can navigate between steps by saying '<em>continue</em>', '<em>previous</em>', or '<em>repeat</em>'.</p>
 
-        <p data-recipe-description>
-            This delicious chorizo-and-cabbage soup is a classic of Portugese cuisine.
-        </p>
+    <p>At the moment, you will need to use Chrome to try this experiment. You'll also need to view this page over HTTPS and give the browser microphone permissions. That's because voice input has various <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#security">privacy considerations.</a></p>
+
+    <!-- Uses the recipe microformat: http://microformats.org/wiki/h-recipe -->
+
+    <article class="h-recipe">
+        <h1 class="p-name">Caldo Verde</h1>
+
+        <button data-recipe-button>Listen to this recipe!</button>
 
         <h2>Ingredients</h2>
-        <ul data-recipe-ingredients>
-            <li>2 onions, chopped</li>
-            <li>4 cloves of garlic, chopped</li>
-            <li>2 tablespoons of olive oil</li>
-            <li>1 chorizo, sliced into thick rounds</li>
-            <li>5 potatoes, diced</li>
-            <li>2 pints of chicken stock</li>
-            <li>a large bunch of dark greens - cavolo nero works well - chopped finely</li>
-            <li>smoked paprika</li>
-            <li>2 bay leaves</li>
-            <li>salt and pepper, to taste</li>
+        <ul>
+            <li class="p-ingredient">2 onions, chopped</li>
+            <li class="p-ingredient">4 cloves of garlic, chopped</li>
+            <li class="p-ingredient">2 tablespoons of olive oil</li>
+            <li class="p-ingredient">1 chorizo, sliced into thick rounds</li>
+            <li class="p-ingredient">5 potatoes, diced</li>
+            <li class="p-ingredient">2 pints of chicken stock</li>
+            <li class="p-ingredient">a large bunch of dark greens - cavolo nero works well - chopped finely</li>
+            <li class="p-ingredient">smoked paprika</li>
+            <li class="p-ingredient">2 bay leaves</li>
+            <li class="p-ingredient">salt and pepper, to taste</li>
         </ul>
 
-        <h2>Method</h2>
-        <ol data-recipe-method>
+        <p>Takes <time class="dt-duration" datetime="25M">25 minutes</time>,
+            serves <data class="p-yield" value="2">two people</data>.</p>
+
+        <ol class="e-instructions">
             <li>Fry the onions and garlic in the olive oil until soft.</li>
             <li>Add the chorizo.</li>
             <li>Fry the onions and sausage for a few more minutes and then add the potatoes.</li>
@@ -53,8 +56,7 @@
             <li>Simmer for a few minutes until the greens have begun to wilt.</li>
             <li>Serve with a smoked paprika and a swirl of olive oil</li>
         </ol>
-
-    </div>
+    </article>
 
     <template data-recipe-view>
         <!--Could this be moved into a browserified template? -->
