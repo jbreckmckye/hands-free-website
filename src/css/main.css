@@ -15,7 +15,6 @@ body, .overlay {
 /*Overlay styles*/
 
 .overlay {
-    background: #004889;
     color: white;
 
     position: fixed;
@@ -29,8 +28,10 @@ body, .overlay {
 
 .overlay-closed {
     transform: translateY(100vh);
+    background: #114762;
 }
 
 .overlay-open {
     transform: translateY(0vh);
+    background: #0C5479;
 }

@@ -1,9 +1,10 @@
+const events = require('./events');
+
 module.exports = new Microphone();
 
 function Microphone() {
     const RecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition;
     const recognition = new RecognitionConstructor();
-    const commandRegister = {};
 
     // Keep listening even after user pauses
     recognition.continuous = true;
@@ -17,15 +18,16 @@ function Microphone() {
 
     recognition.onresult = (event) => {
         const updatedResult = event.results[event.resultIndex];
-        const bestMatch = updatedResult[0]; // result-lists are arrays of the best-to-worst recognition matches
+        const bestMatch = updatedResult[0].transcript; // result-lists are arrays of the best-to-worst recognition matches
         const words = bestMatch.split(' ');
         const command = words[words.length - 1];
         console.log('Command:', command);
+        events.emit('voiceInput', command);
     };
 
-    this.registerCommand = (key, fn) => {
-        commandRegister[key] = fn;
-    };
+    events.on('quit', ()=> {
+        recognition.stop();
+    });
 
     this.beginListening = ()=> {
         recognition.start();
