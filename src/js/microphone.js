@@ -17,7 +17,7 @@ function Microphone() {
 
     recognition.onresult = (event) => {
         const updatedResult = event.results[event.resultIndex];
-        const bestMatch = updateResult[0]; // result-lists are arrays of the best-to-worst recognition matches
+        const bestMatch = updatedResult[0]; // result-lists are arrays of the best-to-worst recognition matches
         const words = bestMatch.split(' ');
         const command = words[words.length - 1];
         console.log('Command:', command);
