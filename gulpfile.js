@@ -15,7 +15,7 @@ gulp.task('clean', ()=> {
 
 gulp.task('deploy', ()=> {
     const jsBundle =
-        browserify('./src/js/index.js')
+        browserify('./src/js/boot.js')
         .bundle()
         .pipe(vinylSource('bundle.js'))
         .pipe(gulp.dest('./build'));

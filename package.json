@@ -31,6 +31,6 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "event-emitter": "^0.3.4"
+    "trkl": "^1.0.0"
   }
 }
