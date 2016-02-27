@@ -1,4 +1,4 @@
-const trkl = require('trkl').trkl;
+const trkl = require('trkl');
 
 module.exports = Application;
 

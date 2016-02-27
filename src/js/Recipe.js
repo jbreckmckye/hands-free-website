@@ -1,5 +1,5 @@
 const parseRecipe = require('./parseRecipe');
-const trkl = require('trkl').trkl;
+const trkl = require('trkl');
 
 module.exports = Recipe;
 
@@ -41,7 +41,6 @@ function Recipe(recipeElement, microphone) {
     });
 
     this.title = recipeData.title;
-
 
 }
 

@@ -1,8 +1,8 @@
-const events = require('./events');
+const trkl = require('trkl');
 
-module.exports = new Microphone();
+module.exports = Microphone;
 
-function Microphone() {
+function Microphone(app) {
     const RecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition;
     const recognition = new RecognitionConstructor();
 
@@ -17,16 +17,22 @@ function Microphone() {
         const bestMatch = updatedResult[0].transcript; // result-lists are arrays of the best-to-worst recognition matches
         const words = bestMatch.split(' ');
         const command = words[words.length - 1];
-        console.log('Command:', command);
-        events.emit('voiceInput', command);
+        this.lastCommand(command);
     };
 
-    events.on('quit', ()=> {
-        recognition.stop();
+    trkl.computed(function watchAppState() {
+        const shouldListen = app.isActive();
+        if (shouldListen) {
+            recognition.start();
+        } else {
+            recognition.stop();
+        }
     });
 
-    this.beginListening = ()=> {
-        recognition.start();
-    };
+    this.lastCommand = trkl();
+
+    this.lastCommand.subscribe(newVal => {
+        console.log(newVal);
+    });
 
 }

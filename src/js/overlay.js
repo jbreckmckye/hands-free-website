@@ -1,68 +1,58 @@
-const events = require('./events');
+const trkl = require('trkl');
 
 module.exports = Overlay;
 
-function Overlay(recipe) {
+function Overlay(app, microphone, recipe) {
+    // Here, I have experimented with the idea I could write my view using template strings, composing my HTML out of
+    // computed observables returning sub-views when model properties change.
+    // It's a nice idea in theory, but not very efficient - probably not suitable for large-scale apps.
+
     const container = createContainer();
-    const model = {
-        isActive : false,
-        title : recipe.title,
-        output : 'Sweat your onions, you fool!',
-        lastInput : ''
-    };
 
-    container.addEventListener('click', ()=> events.emit('quit'));
-
-    events.on('voiceInput', phrase => {
-        updateModel('lastInput', toTitleCase(phrase));
+    const containerClasses = trkl.computed(()=> {
+        return `overlay overlay-${app.isActive() ? "open" : "closed"}`;
     });
 
-    events.on('quit', ()=> updateModel('isActive', false));
-
-    events.on('start', ()=> updateModel('isActive', true));
-
-    render();
-
-    function updateModel(key, val) {
-        model[key] = val;
-        render();
-    }
-
-    function render() {
-        renderView(model, container);
-    }
-}
-
-function renderView(model, container) {
-    // I was hoping to be able to jury-rig a react-esque approach just using template strings.
-    // In practice the approach has some limitations.
-
-    container.className = `overlay overlay-${model.isActive ? 'open' : 'closed'}`;
-    container.innerHTML = model.isActive ? renderInner() : '';
-
-    function renderInner() {
-        return `
-            <h1>Hands free ${model.title}</h1>
-            <p>Click / press the screen or say 'exit' to quit.</p>
-            <p>Say 'continue' to go forwards, 'previous' to go back, or 'repeat' to retry</p>
-            ${renderOutput()}
-            ${renderLastHeard()}
-        `;
-    }
-
-    function renderOutput() {
+    const currentStepHtml = trkl.computed(()=> {
         return `
             <h2>Current step:</h2>
-            <p>${model.output}</p>
+            <p>${recipe.currentStep()}</p>
         `;
-    }
+    });
 
-    function renderLastHeard() {
+    const lastCommandHtml = trkl.computed(()=> {
+        const lastCommand = microphone.lastCommand();
         return `
             <h2>Last command:</h2>
-            <p>${model.lastInput !== '' ? model.lastInput : '(Say something)'}</p>
+            <p>${lastCommand ? toTitleCase(lastCommand) : "(Say something)"}</p>
         `;
-    }
+    });
+
+    const viewHtml = trkl.computed(()=> {
+        return `
+            <h1>Hands free ${recipe.title}</h1>
+            <p>Click / press the screen or say 'exit' to quit</p>
+            <p>Say 'continue' to go forwards, 'previous' to go back, or 'repeat' to retry</p>
+            ${currentStepHtml()}
+            ${lastCommandHtml()}
+        `;
+    });
+
+    // Subscribe view to stream results
+
+    trkl.computed(function syncContainerClasses() {
+        container.className = containerClasses();
+    });
+
+    trkl.computed(function syncContainerHtml() {
+        container.innerHTML = viewHtml();
+    });
+
+    // Allow user to 'click out' of the application
+    container.addEventListener('click', ()=> {
+        app.isActive(false);
+    });
+
 }
 
 function createContainer() {
