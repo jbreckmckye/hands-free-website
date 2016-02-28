@@ -18,4 +18,4 @@ const recipe = new Recipe(recipeElement, microphone);
 // Display the state of the application
 new Overlay(app, microphone, recipe);
 // Create a speaker that can read out the recipe
-new Speaker(app, recipe);
+new Speaker(app, recipe, microphone);
