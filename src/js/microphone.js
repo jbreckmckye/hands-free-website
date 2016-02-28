@@ -16,7 +16,7 @@ function Microphone(app) {
         const updatedResult = event.results[event.resultIndex];
         const bestMatch = updatedResult[0].transcript; // result-lists are arrays of the best-to-worst recognition matches
         const words = bestMatch.split(' ');
-        const command = words[words.length - 1];
+        const command = words[words.length - 1].toLowerCase();
         this.lastCommand(command);
     };
 
