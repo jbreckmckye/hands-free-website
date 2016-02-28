@@ -12,7 +12,7 @@ function Recipe(recipeElement, microphone) {
         recipeData.ingredients,
         "You are now ready to begin cooking",
         recipeData.instructions.map((instruction, index) => {
-            return "Step " + index + ". " + instruction
+            return "Step " + (index + 1) + ". " + instruction
         }),
         "Your " + recipeData.title + ' is now ready to serve. Enjoy!'
     ]);
