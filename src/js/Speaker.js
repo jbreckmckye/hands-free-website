@@ -5,7 +5,7 @@ module.exports = Speaker;
 function Speaker(app, recipe) {
     const voices = new Voices();
 
-    function speak(phrase) {
+    function speak(text) {
         window.speechSynthesis.cancel();
 
         var msg = new SpeechSynthesisUtterance();
@@ -16,7 +16,7 @@ function Speaker(app, recipe) {
         msg.lang = 'en-GB';
         msg.voice = voices.getNewVoice();
 
-        window.speechSynthesis.speak(phrase);
+        window.speechSynthesis.speak(msg);
     }
 
     trkl.computed(function syncWithState() {
@@ -36,7 +36,7 @@ function Voices() {
     const voices = window.speechSynthesis.getVoices();
     const actor1 = getFemale() || getDefault();
     const actor2 = getMale() || getDefault();
-    let currentActor = actor1;
+    var currentActor = actor1;
 
     this.getNewVoice = ()=> {
         currentActor = (currentActor === actor1) ? actor2 : actor1;
